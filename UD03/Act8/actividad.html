@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nombre y Apellidos</title>
+  </head>
+  <body>
+    <form name="frmNombreApellidos">
+        <select name="selector" id="selectFechas">
+          <option onclick="imprimeFecha()">Fecha actual</option>
+          <option onclick="imprimeDia()">Dia</option>
+          <option onclick="imprimeHora()">Hora</option>
+          <option onclick="imprimeTodo()">Todo</option>
+        </select>
+    </form>
+    <hr>  
+    <p id="salida"></p>
+    <script src="actividad.js"></script>
+  </body>
+</html>

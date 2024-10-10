@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nombre y Apellidos</title>
+  </head>
+  <body>
+    <form name="frmNombreApellidos">
+        <label>Nombre</label>
+        <input type="text" name="nombre">
+        <br>
+        <label>Apellidos</label>
+        <input type="text" name="apellidos">
+    </form>
+    <button type="submit" id="aceptar" onclick="imprimeNombre()">Aceptar</button>
+    <hr>
+    <p>El tamaño del nombre más los apellidos sin contar los espacios: <label id="salidaSinEspacio"></label></p>  
+    <p>La cadena completa en minúsculas y mayúsculas. <label id="salidaMinMay"></label></p>
+    <p>La división del nombre, apellido1 y apellido2 en tres líneas distintas. <p id="salidaNom"></p><p id="salidaApe1"></p><p id="salidaApe2"></p></p>
+    <p>Inicial del nombre, primeras tres letras del apellido1 y 
+      primeras tres letras del apellido2. <label id="salidaCorreo"></label></p>    
+    
+    
+    
+    <script src="actividad.js"></script>
+  </body>
+</html>
