@@ -192,9 +192,11 @@ class Agencia{
         }
     }
     listadoClientes(){
-        for(cliente of this.clientes){
-            cliente.toHTMLRow()
+        let devolver = ""
+        for(let cliente of this.clientes){
+            devolver = cliente.toHTMLRow()
         }
+        return devolver
     }
     listadoAlojamientos(){
         for(alojamiento of this.alojamientos){
@@ -295,14 +297,11 @@ function ej3(){
         (alojamiento => alojamiento.idAlojamiento === idAlojamiento)
         alojamientoEncontrado="";
         for (reserva of agencia.reservas){
-            if (
-                (fechaIni < reserva.fechaFin && fechaFin > reserva.fechaIni)
-            ) {
-
+            noExisteHab = reserva.alojamientos.some(alojamiento => alojamiento.idAlojamiento === idAlojamiento)
+            if (fechaIni <= reserva.fechaFin && fechaFin >= reserva.fechaInicio && existeHab == true){
                 error = 1;
-                break;
+                alert("Ese alojamiento está seleccionado")
             }
-            console.log(error)
         }
         if (noExisteAlojamiento == true){
             alert("Alojamiento no existe")
@@ -322,15 +321,18 @@ function ej3(){
                 arrayAlojamiento = []
                 arrayAlojamiento.push(alojamientoEncontrado)
                 reservaNueva = new Reserva (idReserva,dniCliente,arrayAlojamiento,fechaIni,fechaFin)
+                console.log(reservaNueva)
                 alert("Reserva creado")
                 agencia.altaReserva(reservaNueva)
             }
             
         }
-        else{
-            alert("La reserva ya existe")
-        }
     }
+}
+function listadoCli(){
+    devolver = agencia.listadoClientes()
+    console.log(devolver)
+    document.getElementById("tablaDivEj4").innerHTML = "hola"
 }
 agencia = new Agencia([],[],[])
 document.getElementById('radioHab').addEventListener('change', comprobarSeleccion);

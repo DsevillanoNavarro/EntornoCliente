@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
     <h2>EJERCICIO 1</h2>
@@ -49,9 +48,21 @@
     </form>
         <button id="btnEj2" onclick="ej3()">CREAR ALOJAMIENTO</button>
     <hr>
+    <h2>EJERCICIO 4</h2>
+    <form id="formularioEj4">
+        <button id="btnListadoCli" onclick="listadoCli()">Listado Clientes</button>
+        <button id="btnAlojamientos" onclick="listadoAlo()">Listado Alojamientos</button>
+        <button id="btnReservasCli" onclick="listadoReservasCli()">Listado ReservasCliente</button>
+        <label type="text" >DNI: </label><input id="inpBtnDNI"> 
+        <button id="btnReservasCliFechas" onclick="listadoReservasFechas()">Listado Reservas Fecha</button>
+        <label>FECHA INICIO: </label><input type="date" id="inpBtnFechaIni">
+        <label>FECHA FIN: </label><input type="date" id="inpBtnFechaFin">
+        <button id="btnHabitacionesDesayuno" onclick="listadoHabDesayuno()">Listado Habitaciones con Desayuno</button>
+    </form>
+    <hr>
     <h3>SOLUCION:</h3>
     <p>TABLA DEL ALOJAMIENTO:</p>
-    <div id="tablaEj2"></div>
+    <div id="tablaDivEj4"></div>
     <hr>
     <script src="script.js"></script>
 </body>
