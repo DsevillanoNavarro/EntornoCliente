@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <h2>EJERCICIO 1</h2>
+    <form id="formularioEj1">
+        <label type="text" >DNI: </label><input id="inpDNI"> 
+        <label type="text" >Nombre: </label><input id="inpNombre">
+        <label type="text" >Apellidos: </label><input id="inpApellidos">
+    </form>
+        <button id="btnEj1" onclick="ej1()">CREAR NOMBRE DE USUARIO</button>
+    <hr>
+    <h3>SOLUCION:</h3>
+    <p>NOMBRE DE USUARIO:</p>
+    <input id="nUsuario" type="text" disabled>
+    <p>TABLA CON LOS DATOS DEL CLIENTE:</p>
+    <div id="tablaEj1"></div>
+    <hr>
+
+    <h2>EJERCICIO 2</h2>
+    <form id="formularioEj2">
+        <label>idHabitacion: </label><input id="inpIDHab"> 
+        <label>numPersonas: </label><input id="inpNPersonas">
+        <label>Habitación</label><input id="radioHab" name="checkTipo" checked type="radio">
+        <label>Apartamento:</label><input id="radioApar" name="checkTipo" type="radio">
+        <label id="lblDesayuno">Desayuno</label><input id="checkDesayuno" type="checkbox">
+        <label id="lblParking" hidden>Parking</label><input id="checkParking" type="checkbox" hidden>
+        <label id="lblDormitorio" hidden>Dormitorios</label> <input id="inpNDormitorios" hidden>
+    </form>
+        <button id="btnEj2" onclick="ej2()">CREAR ALOJAMIENTO</button>
+    <hr>
+    <h3>SOLUCION:</h3>
+    <p>TABLA DEL ALOJAMIENTO:</p>
+    <div id="tablaEj2"></div>
+    <hr>
+    
+    <h2>EJERCICIO 3</h2>
+    <form id="formularioEj3">
+        <label>idReserva: </label><input id="inpIDReserva">
+        <label>idAlojamiento: </label><input id="inpIDAlojamiento">
+        <label>DNICliente: </label><input id="inpDNICliente">
+        <label>FECHA INICIO: </label><input type="date" id="inpFechaIni">
+        <label>FECHA FIN: </label><input type="date" id="inpFechaFin">   
+    </form>
+        <button id="btnEj2" onclick="ej3()">CREAR ALOJAMIENTO</button>
+    <hr>
+    <h3>SOLUCION:</h3>
+    <p>TABLA DEL ALOJAMIENTO:</p>
+    <div id="tablaEj2"></div>
+    <hr>
+    <script src="script.js"></script>
+</body>
+</html>
