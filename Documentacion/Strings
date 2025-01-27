@@ -1,0 +1,162 @@
+Para manipular cadenas de caracteres en JavaScript de manera efectiva, necesitas conocer varias funciones y métodos que te permitirán realizar diversas operaciones sobre las cadenas. Aquí te dejo un resumen detallado de lo que debes saber:
+1. Creación y declaración de cadenas
+
+    Las cadenas en JavaScript son un tipo de dato primitivo y se pueden declarar de tres formas:
+        Comillas simples: 'Hola Mundo'
+        Comillas dobles: "Hola Mundo"
+        Backticks (plantillas literales): `Hola Mundo` (útil para interpolación de variables)
+
+2. Métodos básicos para trabajar con cadenas
+
+    .length: Devuelve la longitud de la cadena.
+
+let str = "Hola Mundo";
+console.log(str.length);  // 10
+
+.charAt(index): Devuelve el carácter en la posición indicada por index.
+
+let str = "Hola Mundo";
+console.log(str.charAt(0));  // H
+
+.charCodeAt(index): Devuelve el valor Unicode del carácter en la posición index.
+
+let str = "Hola Mundo";
+console.log(str.charCodeAt(0));  // 72 (código Unicode de 'H')
+
+.indexOf(subcadena): Devuelve la primera posición en la que se encuentra la subcadena, o -1 si no se encuentra.
+
+let str = "Hola Mundo";
+console.log(str.indexOf("Mundo"));  // 5
+console.log(str.indexOf("mundo"));  // -1 (porque es sensible a mayúsculas)
+
+.lastIndexOf(subcadena): Devuelve la última posición de la subcadena encontrada.
+
+let str = "Hola Mundo Mundo";
+console.log(str.lastIndexOf("Mundo"));  // 10
+
+.includes(subcadena): Devuelve true si la subcadena está contenida en la cadena.
+
+    let str = "Hola Mundo";
+    console.log(str.includes("Mundo"));  // true
+    console.log(str.includes("mundo"));  // false
+
+3. Extracción de partes de una cadena
+
+    .slice(inicio, fin): Extrae una sección de la cadena sin modificar la original. Los índices negativos se cuentan desde el final.
+
+let str = "Hola Mundo";
+console.log(str.slice(0, 4));  // Hola
+console.log(str.slice(-5));    // Mundo
+
+.substring(inicio, fin): Similar a .slice(), pero no acepta índices negativos.
+
+let str = "Hola Mundo";
+console.log(str.substring(0, 4));  // Hola
+
+.substr(inicio, longitud): Extrae una subcadena desde un índice dado, con una longitud específica.
+
+    let str = "Hola Mundo";
+    console.log(str.substr(5, 5));  // Mundo
+
+4. Modificación de cadenas
+
+    .toLowerCase(): Convierte todos los caracteres de la cadena a minúsculas.
+
+let str = "Hola Mundo";
+console.log(str.toLowerCase());  // hola mundo
+
+.toUpperCase(): Convierte todos los caracteres de la cadena a mayúsculas.
+
+let str = "Hola Mundo";
+console.log(str.toUpperCase());  // HOLA MUNDO
+
+.trim(): Elimina los espacios en blanco al principio y al final de la cadena.
+
+let str = "  Hola Mundo  ";
+console.log(str.trim());  // "Hola Mundo"
+
+.padStart(longitud, caracter): Rellena la cadena al principio hasta alcanzar la longitud deseada, utilizando el carácter proporcionado.
+
+let str = "5";
+console.log(str.padStart(3, "0"));  // 005
+
+.padEnd(longitud, caracter): Rellena la cadena al final hasta alcanzar la longitud deseada.
+
+let str = "5";
+console.log(str.padEnd(3, "0"));  // 500
+
+.replace(expresión, nuevoValor): Reemplaza la primera aparición de una subcadena o expresión regular.
+
+let str = "Hola Mundo";
+console.log(str.replace("Mundo", "JavaScript"));  // Hola JavaScript
+
+.replaceAll(expresión, nuevoValor): Reemplaza todas las apariciones de la subcadena.
+
+    let str = "Hola Mundo Mundo";
+    console.log(str.replaceAll("Mundo", "JavaScript"));  // Hola JavaScript JavaScript
+
+5. Operaciones avanzadas con cadenas
+
+    .split(delimitador): Divide una cadena en un arreglo de subcadenas.
+
+let str = "Hola Mundo";
+let arr = str.split(" ");  // ["Hola", "Mundo"]
+
+.concat(cadena2, cadena3, ...): Combina varias cadenas en una sola.
+
+let str1 = "Hola";
+let str2 = " Mundo";
+console.log(str1.concat(str2));  // Hola Mundo
+
+String.fromCharCode(codigo): Convierte un código Unicode a su carácter correspondiente.
+
+console.log(String.fromCharCode(72));  // H
+
+.localeCompare(cadena): Compara dos cadenas según el orden lexicográfico.
+
+    let str1 = "Hola";
+    let str2 = "Mundo";
+    console.log(str1.localeCompare(str2));  // -1 (si str1 es menor que str2)
+
+6. Expresiones regulares y cadenas
+
+    .match(expresión): Busca coincidencias usando una expresión regular.
+
+let str = "Hola Mundo";
+let result = str.match(/[a-z]+/g);  // ["Hola", "Mundo"]
+
+.replace(expresión, nuevoValor): Reemplaza las coincidencias de una expresión regular.
+
+let str = "Hola Mundo";
+console.log(str.replace(/o/g, "0"));  // H0la M0nd0
+
+.search(expresión): Devuelve la posición de la primera coincidencia de una expresión regular.
+
+    let str = "Hola Mundo";
+    console.log(str.search("Mundo"));  // 5
+
+7. Plantillas literales (Template Literals)
+
+Las plantillas literales te permiten interpolar variables y expresiones dentro de cadenas.
+
+    Interpolación de variables:
+
+let nombre = "Juan";
+let saludo = `Hola, ${nombre}!`;
+console.log(saludo);  // Hola, Juan!
+
+Expresiones dentro de plantillas:
+
+    let a = 5, b = 10;
+    let resultado = `La suma de ${a} y ${b} es ${a + b}`;
+    console.log(resultado);  // La suma de 5 y 10 es 15
+
+Resumen de métodos más útiles:
+
+    Acceso y recorrido: .charAt(), .indexOf(), .includes()
+    Extracción: .slice(), .substring(), .substr(), .split()
+    Modificación: .toLowerCase(), .toUpperCase(), .trim(), .replace(), .replaceAll()
+    Comparación y manipulación avanzada: .localeCompare(), .match(), .search()
+    Relleno: .padStart(), .padEnd()
+
+Con estos métodos y funciones, tendrás un control completo sobre las cadenas de caracteres en JavaScript. Experimenta con ellos para ver cómo puedes combinarlos según tus necesidades.
