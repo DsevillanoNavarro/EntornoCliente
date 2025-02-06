@@ -1,0 +1,174 @@
+En JavaScript, los arrays son estructuras de datos muy útiles y vienen acompañadas de varios métodos que facilitan su manipulación. A continuación te presento algunos de los métodos más comunes y útiles, junto con ejemplos:
+1. push()
+
+Añade uno o más elementos al final de un array y devuelve la nueva longitud del array.
+
+let frutas = ['manzana', 'plátano'];
+frutas.push('cereza');
+console.log(frutas); // ['manzana', 'plátano', 'cereza']
+
+2. pop()
+
+Elimina el último elemento de un array y lo devuelve.
+
+let frutas = ['manzana', 'plátano', 'cereza'];
+let ultimaFruta = frutas.pop();
+console.log(ultimaFruta); // 'cereza'
+console.log(frutas); // ['manzana', 'plátano']
+
+3. shift()
+
+Elimina el primer elemento de un array y lo devuelve.
+
+let frutas = ['manzana', 'plátano', 'cereza'];
+let primeraFruta = frutas.shift();
+console.log(primeraFruta); // 'manzana'
+console.log(frutas); // ['plátano', 'cereza']
+
+4. unshift()
+
+Añade uno o más elementos al principio de un array y devuelve la nueva longitud del array.
+
+let frutas = ['manzana', 'plátano'];
+frutas.unshift('cereza');
+console.log(frutas); // ['cereza', 'manzana', 'plátano']
+
+5. concat()
+
+Une dos o más arrays y devuelve un nuevo array sin modificar los originales.
+
+let frutas1 = ['manzana', 'plátano'];
+let frutas2 = ['cereza', 'fresa'];
+let todasLasFrutas = frutas1.concat(frutas2);
+console.log(todasLasFrutas); // ['manzana', 'plátano', 'cereza', 'fresa']
+
+6. forEach()
+
+Ejecuta una función en cada elemento del array. Es útil para iterar sobre todos los elementos.
+
+let frutas = ['manzana', 'plátano', 'cereza'];
+frutas.forEach(function(fruta) {
+  console.log(fruta);
+});
+// Salida:
+// manzana
+// plátano
+// cereza
+
+7. map()
+
+Crea un nuevo array con los resultados de aplicar una función a cada elemento del array original.
+
+let numeros = [1, 2, 3, 4];
+let cuadrados = numeros.map(num => num * num);
+console.log(cuadrados); // [1, 4, 9, 16]
+
+8. filter()
+
+Crea un nuevo array con todos los elementos que pasen una prueba (función de test).
+
+let numeros = [1, 2, 3, 4, 5, 6];
+let pares = numeros.filter(num => num % 2 === 0);
+console.log(pares); // [2, 4, 6]
+
+9. reduce()
+
+Aplica una función a un acumulador y a cada elemento del array (de izquierda a derecha) para reducirlo a un solo valor.
+
+let numeros = [1, 2, 3, 4];
+let suma = numeros.reduce((acumulador, num) => acumulador + num, 0);
+console.log(suma); // 10
+
+10. find()
+
+Devuelve el primer elemento que cumpla con la condición especificada en la función de prueba.
+
+let numeros = [1, 2, 3, 4, 5];
+let encontrado = numeros.find(num => num > 3);
+console.log(encontrado); // 4
+
+11. includes()
+
+Verifica si un array contiene un elemento determinado, devolviendo true o false.
+
+let frutas = ['manzana', 'plátano', 'cereza'];
+console.log(frutas.includes('manzana')); // true
+console.log(frutas.includes('pera'));    // false
+
+12. indexOf()
+
+Devuelve el primer índice en el que un elemento aparece en el array, o -1 si no se encuentra.
+
+let frutas = ['manzana', 'plátano', 'cereza'];
+let indice = frutas.indexOf('plátano');
+console.log(indice); // 1
+
+13. slice()
+
+Devuelve una copia superficial de una porción del array, sin modificar el original. Recibe dos parámetros: el índice de inicio y el índice final (opcional).
+
+let frutas = ['manzana', 'plátano', 'cereza', 'fresa'];
+let algunasFrutas = frutas.slice(1, 3);
+console.log(algunasFrutas); // ['plátano', 'cereza']
+
+14. splice()
+
+Modifica el contenido de un array eliminando, reemplazando o añadiendo elementos en una posición específica.
+
+let frutas = ['manzana', 'plátano', 'cereza'];
+frutas.splice(1, 1, 'naranja'); // Elimina 1 elemento en la posición 1 y agrega 'naranja'
+console.log(frutas); // ['manzana', 'naranja', 'cereza']
+
+15. sort()
+
+Ordena los elementos de un array en su lugar y devuelve el array ordenado. El orden predeterminado es el alfabético, pero se puede personalizar.
+
+let numeros = [3, 1, 4, 2];
+numeros.sort();
+console.log(numeros); // [1, 2, 3, 4]
+
+let palabras = ['banana', 'manzana', 'cereza'];
+palabras.sort();
+console.log(palabras); // ['banana', 'cereza', 'manzana']
+
+16. reverse()
+
+Invierte el orden de los elementos del array en su lugar.
+
+let numeros = [1, 2, 3, 4];
+numeros.reverse();
+console.log(numeros); // [4, 3, 2, 1]
+
+17. join()
+
+Une todos los elementos de un array en un string, separados por un delimitador.
+
+let frutas = ['manzana', 'plátano', 'cereza'];
+let cadena = frutas.join(', ');
+console.log(cadena); // 'manzana, plátano, cereza'
+
+18. some()
+
+Verifica si al menos un elemento del array cumple con la condición especificada en la función de prueba.
+
+let numeros = [1, 2, 3, 4, 5];
+let hayPares = numeros.some(num => num % 2 === 0);
+console.log(hayPares); // true
+
+19. every()
+
+Verifica si todos los elementos del array cumplen con la condición especificada en la función de prueba.
+
+let numeros = [2, 4, 6, 8];
+let todosPares = numeros.every(num => num % 2 === 0);
+console.log(todosPares); // true
+
+20. flat()
+
+Aplana un array de arrays (o de profundidad anidada) en un solo array.
+
+let numerosAnidados = [1, [2, 3], [4, 5]];
+let numerosPlano = numerosAnidados.flat();
+console.log(numerosPlano); // [1, 2, 3, 4, 5]
+
+Estos son solo algunos de los métodos más útiles de los arrays en JavaScript. Dependiendo de lo que necesites hacer con los arrays, hay muchos otros métodos disponibles para trabajar de manera eficiente con ellos.

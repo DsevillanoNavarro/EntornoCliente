@@ -1,0 +1,335 @@
+Para eliminar un objeto de un array en JavaScript dependiendo de un atributo específico, puedes utilizar el método filter o el método splice en combinación con findIndex. Aquí te muestro las dos opciones:
+Opción 1: Usando filter
+
+El método filter crea un nuevo array que excluye los objetos que cumplen cierta condición.
+
+let array = [
+  { id: 1, nombre: "Objeto 1" },
+  { id: 2, nombre: "Objeto 2" },
+  { id: 3, nombre: "Objeto 3" }
+];
+
+let idAEliminar = 2;
+
+// Creamos un nuevo array sin el objeto con id = 2
+array = array.filter(objeto => objeto.id !== idAEliminar);
+
+console.log(array);
+// Salida: [ { id: 1, nombre: 'Objeto 1' }, { id: 3, nombre: 'Objeto 3' } ]
+
+Opción 2: Usando splice y findIndex
+
+Si quieres modificar directamente el array original (sin crear un nuevo array), puedes usar findIndex para encontrar el índice del objeto y luego eliminarlo con splice.
+
+let array = [
+  { id: 1, nombre: "Objeto 1" },
+  { id: 2, nombre: "Objeto 2" },
+  { id: 3, nombre: "Objeto 3" }
+];
+
+let idAEliminar = 2;
+
+// Encuentra el índice del objeto con id = 2
+let indice = array.findIndex(objeto => objeto.id === idAEliminar);
+
+if (indice !== -1) {
+  // Elimina el elemento del array
+  array.splice(indice, 1);
+}
+
+console.log(array);
+// Salida: [ { id: 1, nombre: 'Objeto 1' }, { id: 3, nombre: 'Objeto 3' } ]
+
+Diferencias entre ambas opciones:
+
+    filter:
+        No modifica el array original; en su lugar, crea uno nuevo.
+        Es más declarativo y fácil de leer si no necesitas mutar el array original.
+
+    splice:
+        Modifica directamente el array original.
+        Es útil si necesitas mutar el array existente en lugar de trabajar con una copia.
+
+Elige la opción que mejor se adapte a tu caso. 😊
+
+1. Usando un for tradicional
+
+Este enfoque usa un índice para acceder a cada elemento del array.
+
+let array = [
+  { id: 1, nombre: "Objeto 1" },
+  { id: 2, nombre: "Objeto 2" },
+  { id: 3, nombre: "Objeto 3" }
+];
+
+for (let i = 0; i < array.length; i++) {
+  console.log(`ID: ${array[i].id}, Nombre: ${array[i].nombre}`);
+}
+
+Salida:
+
+ID: 1, Nombre: Objeto 1
+ID: 2, Nombre: Objeto 2
+ID: 3, Nombre: Objeto 3
+
+2. Usando for...of
+
+El bucle for...of es más legible y está diseñado para iterar sobre elementos de una colección.
+
+let array = [
+  { id: 1, nombre: "Objeto 1" },
+  { id: 2, nombre: "Objeto 2" },
+  { id: 3, nombre: "Objeto 3" }
+];
+
+for (let objeto of array) {
+  console.log(`ID: ${objeto.id}, Nombre: ${objeto.nombre}`);
+}
+
+Salida:
+
+ID: 1, Nombre: Objeto 1
+ID: 2, Nombre: Objeto 2
+ID: 3, Nombre: Objeto 3
+
+3. Usando forEach
+
+forEach es un método del array que permite ejecutar una función para cada elemento.
+
+let array = [
+  { id: 1, nombre: "Objeto 1" },
+  { id: 2, nombre: "Objeto 2" },
+  { id: 3, nombre: "Objeto 3" }
+];
+
+array.forEach(objeto => {
+  console.log(`ID: ${objeto.id}, Nombre: ${objeto.nombre}`);
+});
+
+Salida:
+
+ID: 1, Nombre: Objeto 1
+ID: 2, Nombre: Objeto 2
+ID: 3, Nombre: Objeto 3
+
+Comparación de los enfoques
+
+    for tradicional:
+        Útil si necesitas acceder al índice explícitamente o si necesitas modificar el array mientras iteras.
+        Puede ser un poco más verboso.
+
+    for...of:
+        Más limpio y legible si solo necesitas acceder a los valores del array.
+        No te da acceso directo al índice.
+
+    forEach:
+        Método funcional moderno.
+        No puedes interrumpir el bucle como con break (para eso usarías for o for...of).
+
+Elige el que mejor se ajuste a tu caso. 😊
+
+En JavaScript, los objetos son una de las estructuras de datos más utilizadas. A continuación, te presento algunos de los métodos más útiles que puedes utilizar con objetos en JavaScript, junto con ejemplos prácticos:
+1. Object.keys()
+
+Devuelve un array con las claves (propiedades) de un objeto.
+
+Ejemplo:
+
+const persona = {
+  nombre: "Juan",
+  edad: 30,
+  ciudad: "Madrid"
+};
+
+const claves = Object.keys(persona);
+console.log(claves); // ["nombre", "edad", "ciudad"]
+
+2. Object.values()
+
+Devuelve un array con los valores de las propiedades del objeto.
+
+Ejemplo:
+
+const persona = {
+  nombre: "Juan",
+  edad: 30,
+  ciudad: "Madrid"
+};
+
+const valores = Object.values(persona);
+console.log(valores); // ["Juan", 30, "Madrid"]
+
+3. Object.entries()
+
+Devuelve un array de arrays, donde cada sub-array tiene la clave y el valor de una propiedad del objeto.
+
+Ejemplo:
+
+const persona = {
+  nombre: "Juan",
+  edad: 30,
+  ciudad: "Madrid"
+};
+
+const entradas = Object.entries(persona);
+console.log(entradas); 
+// [["nombre", "Juan"], ["edad", 30], ["ciudad", "Madrid"]]
+
+4. Object.assign()
+
+Copia las propiedades de uno o más objetos en un objeto destino. Útil para la clonación o combinación de objetos.
+
+Ejemplo:
+
+const objeto1 = { a: 1, b: 2 };
+const objeto2 = { c: 3, d: 4 };
+
+const combinado = Object.assign({}, objeto1, objeto2);
+console.log(combinado); // { a: 1, b: 2, c: 3, d: 4 }
+
+5. Object.freeze()
+
+Congela un objeto, lo que significa que no se pueden añadir, eliminar ni modificar propiedades.
+
+Ejemplo:
+
+const persona = {
+  nombre: "Juan",
+  edad: 30
+};
+
+Object.freeze(persona);
+
+persona.edad = 35; // No cambia, ya que el objeto está congelado
+console.log(persona.edad); // 30
+
+6. Object.seal()
+
+Sella un objeto, lo que significa que no puedes eliminar propiedades, pero aún puedes modificar sus valores.
+
+Ejemplo:
+
+const persona = {
+  nombre: "Juan",
+  edad: 30
+};
+
+Object.seal(persona);
+
+persona.edad = 35; // Se puede modificar
+persona.ciudad = "Madrid"; // No se puede añadir
+delete persona.nombre; // No se puede eliminar
+
+console.log(persona); // { nombre: "Juan", edad: 35 }
+
+7. Object.hasOwn()
+
+Verifica si el objeto tiene una propiedad específica como propia (no heredada).
+
+Ejemplo:
+
+const persona = {
+  nombre: "Juan",
+  edad: 30
+};
+
+console.log(persona.hasOwn("nombre")); // true
+console.log(persona.hasOwn("ciudad")); // false
+
+8. Object.create()
+
+Crea un nuevo objeto con un objeto prototipo dado.
+
+Ejemplo:
+
+const prototipo = {
+  saludar: function() {
+    console.log("¡Hola!");
+  }
+};
+
+const persona = Object.create(prototipo);
+persona.nombre = "Juan";
+persona.saludar(); // ¡Hola!
+
+9. Object.fromEntries()
+
+Convierte una lista de pares clave-valor en un objeto.
+
+Ejemplo:
+
+const entries = [
+  ["nombre", "Juan"],
+  ["edad", 30]
+];
+
+const persona = Object.fromEntries(entries);
+console.log(persona); // { nombre: "Juan", edad: 30 }
+
+10. Object.prototype.toString()
+
+Devuelve una cadena de texto representando el tipo de objeto.
+
+Ejemplo:
+
+const persona = {
+  nombre: "Juan",
+  edad: 30
+};
+
+console.log(persona.toString()); // [object Object]
+
+Estos métodos son fundamentales para trabajar con objetos en JavaScript y te ayudarán a realizar una gran variedad de operaciones sobre ellos.
+
+En JavaScript, puedes determinar el tipo de un objeto utilizando diferentes métodos dependiendo de lo que quieras saber. Aquí te dejo algunas formas comunes para hacerlo:
+1. Usar typeof
+
+El operador typeof te devuelve el tipo de un valor. Es útil para tipos primitivos, pero no es tan efectivo para objetos complejos.
+
+let obj = {};
+console.log(typeof obj); // "object"
+
+2. Usar Array.isArray()
+
+Si quieres saber si un objeto es un arreglo, puedes usar Array.isArray(). Este método devuelve true si el valor es un arreglo y false si no lo es.
+
+let arr = [];
+console.log(Array.isArray(arr)); // true
+
+let obj = {};
+console.log(Array.isArray(obj)); // false
+
+3. Usar instanceof
+
+El operador instanceof te permite comprobar si un objeto es una instancia de una clase específica (como Array, Date, etc.).
+
+let arr = [];
+console.log(arr instanceof Array); // true
+
+let obj = {};
+console.log(obj instanceof Object); // true
+
+4. Usar Object.prototype.toString.call()
+
+Para obtener un tipo más detallado, puedes usar el método Object.prototype.toString.call(). Esto es útil para obtener información precisa sobre tipos de objetos que pueden ser complicados, como fechas, expresiones regulares, etc.
+
+let obj = {};
+console.log(Object.prototype.toString.call(obj)); // "[object Object]"
+
+let arr = [];
+console.log(Object.prototype.toString.call(arr)); // "[object Array]"
+
+let date = new Date();
+console.log(Object.prototype.toString.call(date)); // "[object Date]"
+
+let regex = /abc/;
+console.log(Object.prototype.toString.call(regex)); // "[object RegExp]"
+
+Resumen:
+
+    typeof: Para verificar tipos primitivos y objetos en general (si es un objeto, devolverá "object").
+    Array.isArray(): Para verificar si es un arreglo.
+    instanceof: Para verificar si un objeto es instancia de una clase o constructor específico.
+    Object.prototype.toString.call(): Para obtener el tipo de objeto detallado, útil cuando necesitas distinguir entre diferentes tipos de objetos (por ejemplo, un Array, Date, RegExp, etc.).
+
+Usando estas técnicas, puedes determinar de manera precisa de qué tipo de objeto se trata en JavaScript.
