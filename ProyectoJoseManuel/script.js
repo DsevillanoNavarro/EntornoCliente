@@ -1,81 +1,84 @@
-document.getElementById("inputnombre").addEventListener("blur",checkformatNom)
-document.getElementById("inputapellido1").addEventListener("blur",checkformatNom)
-document.getElementById("inputapellido2").addEventListener("blur",checkformatNom)
-document.getElementById("inputtelefono").addEventListener("blur",checkformatTlf)
-document.getElementById("btnCrear").addEventListener("click",crearAlu)
-document.getElementById("btnModificar").addEventListener("click",modificarAlu)
-let hayerror= false
+document.getElementById("inputnombre").addEventListener("blur", checkformatNom)
+document.getElementById("inputapellido1").addEventListener("blur", checkformatNom)
+document.getElementById("inputapellido2").addEventListener("blur", checkformatNom)
+document.getElementById("inputtelefono").addEventListener("blur", checkformatTlf)
+document.getElementById("btnCrear").addEventListener("click", crearAlu)
+document.getElementById("btnModificar").addEventListener("click", modificarAlu)
+let hayerror = false
 let nombreAluMod = ""
 let tablaAlu = []
 
-function cambiarError(elemento,check) {
-    if(check == true){
-    elemento.style.borderColor = "red"
-    hayerror = true
+function cambiarError(elemento, check) {
+    if (check == true) {
+        elemento.style.borderColor = "red"
+        hayerror = true
     }
-    if(check == false){
-    hayerror = false
-    elemento.style.borderColor = "#f1f3f4"
+    if (check == false) {
+        hayerror = false
+        elemento.style.borderColor = "#f1f3f4"
     }
 }
-function checkformatNom(){
+function checkformatNom() {
 
     if (/\d/.test(event.target.value)) {
-        cambiarError(event.target,true) 
+        cambiarError(event.target, true)
     } else {
-        cambiarError(event.target,false)
+        cambiarError(event.target, false)
     }
 
 }
-    
-function checkformatTlf(){
-    
+
+function checkformatTlf() {
+
     if (/^\d{9}$/.test(event.target.value)) {
-        cambiarError(event.target,false) 
+        cambiarError(event.target, false)
     } else {
-        cambiarError(event.target,true)
+        cambiarError(event.target, true)
     }
 }
 
-function crearAlu(){
-    if (hayerror == false){
+function crearAlu() {
+    if (hayerror == false) {
         const nombre = document.getElementById("inputnombre").value;
         const apellido1 = document.getElementById("inputapellido1").value;
         const apellido2 = document.getElementById("inputapellido2").value;
         const telefono = document.getElementById("inputtelefono").value;
         const fechanacimiento = document.getElementById("inputfecha").value;
-        const mail = document.getElementById("inputmail").value; 
+        const mail = document.getElementById("inputmail").value;
         const contrasena = document.getElementById("inputcontrasena").value;
-        const comunidades = document.getElementById("selectcomunidades").value; 
-        const provincias = document.getElementById("selectprovincias").value; 
+        const comunidades = document.getElementById("selectcomunidades").value;
+        const provincias = document.getElementById("selectprovincias").value;
         const alumnoEncontrado = tablaAlu.find(alumno => alumno.nombre === nombre);
 
         if (alumnoEncontrado) {
-            alert("El alumno ya existe: "+ alumnoEncontrado.nombre);
+            alert("El alumno ya existe: " + alumnoEncontrado.nombre);
         } else {
-            const nuevoAlumno = new Alumno(
-                nombre,
-                apellido1,
-                apellido2,
-                telefono,
-                fechanacimiento,
-                mail,
-                contrasena,
-                comunidades,
-                provincias
-            );
-            tablaAlu.push(nuevoAlumno);
-            console.log(tablaAlu)
-            actualizaTabla()
-            
+            if (nombre == "") {
+                alert("TIENES QUE PONER UN NOMBRE")
+            } else {
+                const nuevoAlumno = new Alumno(
+                    nombre,
+                    apellido1,
+                    apellido2,
+                    telefono,
+                    fechanacimiento,
+                    mail,
+                    contrasena,
+                    comunidades,
+                    provincias
+                );
+                tablaAlu.push(nuevoAlumno);
+                console.log(tablaAlu)
+                actualizaTabla()
+            }
         }
-        
-    }else{
+
+    } else {
         alert("Algunos de los campos están mal")
     }
 }
 
-function actualizaTabla(){
+function actualizaTabla() {
     let salida = document.getElementById("salida")
     salida.innerHTML = ""
     for (let alu of tablaAlu) {
@@ -84,21 +87,21 @@ function actualizaTabla(){
     }
 }
 
-function borrarAlu(){
+function borrarAlu() {
     const contenedor = event.target.parentElement;
 
     const parrafo = contenedor.querySelector("p");
 
     nombre = parrafo.textContent;
-    
+
     const alumnoEncontrado = tablaAlu.findIndex(alumno => alumno.nombre === nombre);
     tablaAlu.splice(alumnoEncontrado, 1);
     alert("Alumno Eliminado")
     actualizaTabla()
 }
 
-function modoModificar(){
-    
+function modoModificar() {
+
     document.getElementById("btnCrear").disabled = true
     document.getElementById("btnModificar").disabled = false
 
@@ -121,18 +124,18 @@ function modoModificar(){
     document.getElementById("selectprovincias").value = alumnoEncontrado.provincias;
 }
 
-function modificarAlu(){
+function modificarAlu() {
 
-    if (hayerror == false){
+    if (hayerror == false) {
         const nombre = document.getElementById("inputnombre").value;
         const apellido1 = document.getElementById("inputapellido1").value;
         const apellido2 = document.getElementById("inputapellido2").value;
         const telefono = document.getElementById("inputtelefono").value;
         const fechanacimiento = document.getElementById("inputfecha").value;
-        const mail = document.getElementById("inputmail").value; 
+        const mail = document.getElementById("inputmail").value;
         const contrasena = document.getElementById("inputcontrasena").value;
-        const comunidades = document.getElementById("selectcomunidades").value; 
-        const provincias = document.getElementById("selectprovincias").value; 
+        const comunidades = document.getElementById("selectcomunidades").value;
+        const provincias = document.getElementById("selectprovincias").value;
 
         const alumnoEncontrado = tablaAlu.findIndex(alumno => alumno.nombre === nombreAluMod);
         tablaAlu.splice(alumnoEncontrado, 1);
@@ -154,22 +157,22 @@ function modificarAlu(){
         document.getElementById("btnCrear").disabled = false
         document.getElementById("btnModificar").disabled = true
         document.getElementById("inputnombre").value = ""
-    document.getElementById("inputapellido1").value = ""
-    document.getElementById("inputapellido2").value = ""
-    document.getElementById("inputtelefono").value = ""
-    document.getElementById("inputfecha").value = ""
-    document.getElementById("inputmail").value = ""
-    document.getElementById("inputcontrasena").value = ""
-    document.getElementById("selectcomunidades").value = ""
-    document.getElementById("selectprovincias").value = ""
-    }else{
+        document.getElementById("inputapellido1").value = ""
+        document.getElementById("inputapellido2").value = ""
+        document.getElementById("inputtelefono").value = ""
+        document.getElementById("inputfecha").value = ""
+        document.getElementById("inputmail").value = ""
+        document.getElementById("inputcontrasena").value = ""
+        document.getElementById("selectcomunidades").value = ""
+        document.getElementById("selectprovincias").value = ""
+    } else {
         alert("Algunos de los campos están mal")
     }
 
 }
 
-class Alumno{
-    constructor(nombre,apellido1,apellido2,telefono,fechanacimiento,mail,contrasena,comunidades,provincias){
+class Alumno {
+    constructor(nombre, apellido1, apellido2, telefono, fechanacimiento, mail, contrasena, comunidades, provincias) {
         this._nombre = nombre;
         this._apellido1 = apellido1
         this._apellido2 = apellido2
